@@ -1,6 +1,5 @@
 import React, {useCallback, useEffect} from 'react'
 import {v1} from "uuid"
-import {div} from "three/examples/jsm/nodes/math/OperatorNode";
 
 const AdminRender = (
     {

@@ -23,22 +23,28 @@ const AdminUploadFile = () => {
             console.log(error)
         }
     }, [stateUploads])
+
     const onChangeFile = (e) => {
         let a = stateUploads.find(t => {return t.img === e.target.files[0].name})
         if (a) {
             alert("This file already exists")
         }
-        else {setFileName(e.target.files[0])}
+        else
+        {setFileName(e.target.files[0])}
     }
 
     const interfile = useCallback(async (e) => {
 
         const formData = new FormData()
 
-        formData.append("cards", localCard.name)
-        formData.append("group", localCard.project)
+        formData.append("cards", "superDesk")
+        formData.append("group", "desk")
+        formData.append("cardnumber", "dofighodifhg3r3434")
         formData.append("myfile", fileName)
-
+        // formData.append("cards", localCard.name)
+        // formData.append("group", localCard.project)
+        // formData.append("cardnumber", "394f3if34f")
+        // formData.append("myfile", fileName)
         try {
             await axios
                 .post(`/api/upload/addfile/`, formData)
@@ -150,7 +156,7 @@ const AdminUploadFile = () => {
                         </button>
                     </div>
                 </form>
-                {rend}
+                {/*{rend}*/}
             </div>
             <div className="m-4">
                 {

@@ -77,7 +77,7 @@ router.delete('/delcard/:id', async (req, res) => {
 )
 
 router.post("/addmainfull", upload.single("myfile"), async (req, res) => {
-    console.log("HELLO")
+    console.log("HELLO212121")
     try {
        const name = req.body.name
        const isUsed = await MainEcomFull.findOne({name})

@@ -3,8 +3,6 @@ import {v1} from "uuid"
 
 const ProbaImage = ({setImages, images}) => {
     const [arr, setArr] = useState([])
-    console.log("IMEGES newArr: ", arr)
-    console.log("IMEGES images: ", images)
 
     const onChange = (e) => {
         let newArr = arr.map(t => t.num === e.target.id ? {...t, description: e.target.value} : t)

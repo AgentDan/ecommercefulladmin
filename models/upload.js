@@ -8,6 +8,10 @@ const uploadSchema = new mongoose.Schema({
         type: String,
         required: false,
     },
+    cardnumber: {
+        type: String,
+        required: false,
+    },
     group: {
         type: String,
         required: false,

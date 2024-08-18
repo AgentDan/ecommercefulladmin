@@ -6,8 +6,9 @@ const Upload = require('./../models/upload')
 
 const storage = multer.diskStorage({
     destination: (req, file, callback) => {
-        // callback(null, "./client/public/uploads");
-        callback(null, "./uploadFiles");
+        callback(null, "./client/public/uploads");
+        // callback(null, "./client/src/download");
+        // callback(null, "./uploadFiles");
     },
     filename: (req, file, callback) => {
         callback(null, file.originalname)
@@ -22,10 +23,11 @@ router.get('/', async (request, response) => {
 })
 
 router.post("/addfile", upload.single("myfile"), async (req, res) => {
-    console.log("HELLO111")
+    console.log("HELLO1113 : ", req.body)
     try {
         const newBlog = new Upload({
             cards: req.body.cards,
+            cardnumber: req.body.cardnumber,
             group: req.body.group,
             description: req.body.description,
             img: req.file.originalname
@@ -39,8 +41,6 @@ router.post("/addfile", upload.single("myfile"), async (req, res) => {
     } catch (error) {
         console.log(error)
     }
-
-
 })
 
 router.delete('/deleteblog/:id', async (request, response) => {

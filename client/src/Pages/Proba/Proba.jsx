@@ -1,15 +1,16 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import ProbaImage from "./ProbaImage";
 import ProbaComponents from "./ProbaComponents";
 import ProbaCard from "./ProbaCard";
 import axios from "axios";
-import ProbaUploadFile from "./ProbaUploadFile";
+import ProbaListProjects from "./ProbaListProjects";
 
 const Proba = () => {
     const [card, setCard] = useState([])
     const [images, setImages] = useState([])
     const [components, setComponents] = useState([])
     const [cardProduct, setCardProduct] = useState([])
+    const [projects, setProjects] = useState([])
 
     useEffect(() => {
         setCardProduct({
@@ -25,12 +26,29 @@ const Proba = () => {
         })
     }, [images, components, card])
 
+    const  getProjects = useCallback( async () => {
+        try {
+            await axios.get('/api', {
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            })
+                .then((response) => setProjects(response.data))
+        }catch (error){
+            console.log(error)
+        }
+    }, [])
+
+    useEffect(()=>{
+        getProjects()
+    }, [])
+
     const onClickServer = async () => {
-        console.log("PROBA : ", cardProduct)
         try {
             await axios.post('/api/addmainfull', {...cardProduct}, {
                 headers: {'Content-Type': 'application/json'}
             })
+                .then(()=> getProjects())
 
         } catch (error) {
             console.log(error)
@@ -38,14 +56,21 @@ const Proba = () => {
     }
 
     return (
-        <div className="flex flex-row">
-            <div className="w-1/3">
-                <button
-                    className="bg-green-600 hover:bg-red-700 hover:text-white h-auto rounded-2xl w-1/3 m-4"
-                    onClick={onClickServer}
-                >PRESS
-                </button>
-
+        <div className="flex flex-row p-4">
+            <div className="w-3/4">
+                <ProbaListProjects
+                    projects={projects}
+                    setProjects={setProjects}
+                />
+            </div>
+            <div className="w-1/4">
+                <div className="h-auto">
+                    <button
+                        className="bg-green-600 hover:bg-red-700 hover:text-white h-auto rounded-2xl w-1/3 m-4"
+                        onClick={onClickServer}
+                    >PRESS
+                    </button>
+                </div>
                 <div className="h-auto">
                     <ProbaCard card={card} setCard={setCard}/>
                 </div>
@@ -56,9 +81,7 @@ const Proba = () => {
                     <ProbaComponents components={components} setComponents={setComponents}/>
                 </div>
             </div>
-            <div className="w-1/3">
-                <ProbaUploadFile/>
-            </div>
+
         </div>
     );
 };

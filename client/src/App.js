@@ -6,10 +6,11 @@ import {useState, createContext} from "react";
 import Lamp from "./Pages/Lamp/Lamp";
 import Projects from "./Pages/Projects/Projects"
 import Admin from "./Pages/Admin/Admin";
-import Proba from "./Pages/Proba/Proba";
 import AdminProba from "./Pages/Admin/AdminProba";
 import AdminUploadFile from "./Pages/Admin/AdminUploadFile";
 import Desk from "./Pages/Desk/Desk";
+import ProbaUploadFile from "./Pages/Proba/ProbaUploadFile";
+import Proba from "./Pages/Proba/Proba";
 
 function App() {
     const [currentLang, setCurrentLang] = useState("en")
@@ -31,6 +32,7 @@ function App() {
                         <Route path="/admin197908/info" element={<Admin/>}/>
                         <Route path="/admin197908/upload" element={<AdminUploadFile/>}/>
                         <Route path="/proba" element={<Proba/>}/>
+                        <Route path="/proba/upload" element={<ProbaUploadFile/>}/>
                         <Route path="*"
                                element={<MainPage currentLang={currentLang} setCurrentLang={setCurrentLang}/>}/>
                     </Routes>
