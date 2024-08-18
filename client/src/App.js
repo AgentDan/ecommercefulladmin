@@ -11,6 +11,7 @@ import AdminUploadFile from "./Pages/Admin/AdminUploadFile";
 import Desk from "./Pages/Desk/Desk";
 import ProbaUploadFile from "./Pages/Proba/ProbaUploadFile";
 import Proba from "./Pages/Proba/Proba";
+import ProbaAdmin from "./Pages/Proba/ProbaAdmin";
 
 function App() {
     const [currentLang, setCurrentLang] = useState("en")
@@ -28,6 +29,7 @@ function App() {
                         <Route path="/desk"
                                element={<Desk project={"desk"} currentLang={currentLang}/>}/>
                         <Route path="/project/:id" element={<Projects/>}/>
+                        <Route path="/admin" element={<ProbaAdmin/>}/>
                         <Route path="/admin197908" element={<AdminProba/>}/>
                         <Route path="/admin197908/info" element={<Admin/>}/>
                         <Route path="/admin197908/upload" element={<AdminUploadFile/>}/>

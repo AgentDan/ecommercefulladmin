@@ -68,9 +68,9 @@ const ProbaListProjects = ({projects}) => {
         setComponents(b[0])
     }
     const onClickDeleteCard = useCallback(async (id, index) => {
-        if (index < 1) {
-            window.location.reload()
-        }
+        localStorage.setItem('localCard', "")
+        localStorage.setItem('localCardName', "")
+        window.location.reload()
 
         try {
             await axios.delete(`/api/delcard/${id}`, {id}, {
@@ -91,7 +91,8 @@ const ProbaListProjects = ({projects}) => {
                 </div>
                 {currentProjects.map((t) => {
                     return (
-                        <div className="w-auto h-8 m-1 rounded-2xl content-start border-2 border-black text-left relative">
+                        <div
+                            className="w-auto h-8 m-1 rounded-2xl content-start border-2 border-black text-left relative">
                             <div
                                 key={v1()}
                                 className={`h-auto  text-xl w-auto px-2 rounded-2xl top-0 cursor-pointer left-0 ${localProject && t === localProject ? "bg-green-600 text-white " : ""}`}
@@ -157,7 +158,7 @@ const ProbaListProjects = ({projects}) => {
                                 components.map((t) => {
                                     return (<span key={v1()}>
                                         <div key={v1()}
-                                             className="bg-gray-400 h-auto rounded-tr-2xl rounded-bl-2xl text-center content-center mb-2">
+                                             className="bg-gray-200 h-auto rounded-tr-2xl rounded-bl-2xl text-center content-center">
                                             {t.name}
                                         </div>
                                             {t.elems &&
