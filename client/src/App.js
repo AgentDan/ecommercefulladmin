@@ -30,11 +30,7 @@ function App() {
                                element={<Desk project={"desk"} currentLang={currentLang}/>}/>
                         <Route path="/project/:id" element={<Projects/>}/>
                         <Route path="/admin" element={<ProbaAdmin/>}/>
-                        <Route path="/admin197908" element={<AdminProba/>}/>
-                        <Route path="/admin197908/info" element={<Admin/>}/>
-                        <Route path="/admin197908/upload" element={<AdminUploadFile/>}/>
                         <Route path="/proba" element={<Proba/>}/>
-                        <Route path="/proba/upload" element={<ProbaUploadFile/>}/>
                         <Route path="*"
                                element={<MainPage currentLang={currentLang} setCurrentLang={setCurrentLang}/>}/>
                     </Routes>

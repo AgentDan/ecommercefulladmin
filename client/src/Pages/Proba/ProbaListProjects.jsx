@@ -91,10 +91,9 @@ const ProbaListProjects = ({projects}) => {
                 </div>
                 {currentProjects.map((t) => {
                     return (
-                        <div
-                            className="w-auto h-8 m-1 rounded-2xl content-start border-2 border-black text-left relative">
+                        <div key={v1()}
+                             className="w-auto h-8 m-1 rounded-2xl content-start border-2 border-black text-left relative">
                             <div
-                                key={v1()}
                                 className={`h-auto  text-xl w-auto px-2 rounded-2xl top-0 cursor-pointer left-0 ${localProject && t === localProject ? "bg-green-600 text-white " : ""}`}
                                 onClick={() => onClickLocalProject(t)}
                             >

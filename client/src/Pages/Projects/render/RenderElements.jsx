@@ -3,9 +3,10 @@ import React from "react"
 export function RenderElements(props) {
     const {myPath} = props
     const pathGlobal = process.env.REACT_APP_PUBLIC_URL
-    const pathNew = pathGlobal + myPath + ".gltf"
+    const pathNew = pathGlobal + "/fotos/" + myPath + ".gltf"
     // const pathNew = "http://localhost:3000/models/" + myPath + ".gltf"
     const {nodes, materials} = useGLTF(pathNew)
+    console.log("PATH : ", pathNew)
 
     return (
         <>

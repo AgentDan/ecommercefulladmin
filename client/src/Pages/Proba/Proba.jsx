@@ -20,7 +20,7 @@ const Proba = () => {
             name: card.name,
             project: card.project,
             price: card.price,
-            nameEn: card.nameEN,
+            nameEN: card.nameEN,
             nameRS: card.nameRS,
             nameRU: card.nameRU
         })

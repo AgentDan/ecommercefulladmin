@@ -6,7 +6,7 @@ const Upload = require('./../models/upload')
 
 const storage = multer.diskStorage({
     destination: (req, file, callback) => {
-        callback(null, "./client/public/uploads");
+        callback(null, "./client/public/fotos");
         // callback(null, "./client/src/download");
         // callback(null, "./uploadFiles");
     },
@@ -14,7 +14,6 @@ const storage = multer.diskStorage({
         callback(null, file.originalname)
     }
 })
-
 const upload = multer({storage: storage})
 
 router.get('/', async (request, response) => {
@@ -48,7 +47,7 @@ router.delete('/deleteblog/:id', async (request, response) => {
         const blog = await Upload.findOneAndDelete({_id: request.params.id})
         let upload = await Upload.find()
         response.json(upload)
-        fs.unlinkSync(`./client/public/uploads/${blog.img}`)
+        fs.unlinkSync(`./client/public/fotos/${blog.img}`)
 
     } catch (error) {
         console.log(error)

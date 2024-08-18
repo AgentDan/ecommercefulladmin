@@ -8,7 +8,7 @@ const RenderElems = ({elems}) => {
             {
                 elems.map((t) => {
                     return (
-                        <RenderElements myPath={t}/>
+                        <RenderElements myPath={t.name}/>
                     )
                 })
             }

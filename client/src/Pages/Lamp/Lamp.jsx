@@ -9,6 +9,7 @@ const Lamp = ({project, currentLang}) => {
     const [stateFull, setStateFull] = useState([])
     const [stateCards, setStateCards] = useState([])
 
+    console.log("STATE CARDS : ", stateCards)
     const getState = useCallback(async () => {
         try {
             await axios.get('/api/', {
@@ -59,12 +60,12 @@ const Lamp = ({project, currentLang}) => {
             }
 
             return (
-                <div key={i._id}>
+                <div key={i._id} className="p-5">
                     {i.images[0] ?
                         <ReactCardFlip isFlipped={i.check} flipDirection={"horizontal"}>
-                            <div className="card h-3/4 bg-white p-2">
-                                <div className="p-5 flex flex-col ">
-                                    <div className="rounded-xl overflow-hidden ">
+                            <div className="card h-3/4 bg-white">
+                                <div className="flex flex-col p-5">
+                                    <div className="rounded-xl overflow-hidden xs:h-full">
                                         <img src={'./fotos/' + i.images[i.imagesCounter]} alt=""
                                              className="h-auto w-auto "
                                              onClick={() => onClickFullScreenImg('./fotos/' + i.images[i.imagesCounter])}
@@ -79,7 +80,7 @@ const Lamp = ({project, currentLang}) => {
                                             IMAGES
                                         </div>
                                         <Link to={`/project/${i._id}/`}
-                                              className="h-12 w-1/2 text-2xl text-white pt-1 content-center text-center cursor-pointer bg-blue-600 rounded-lg"
+                                              className="h-10 w-1/2 text-2xl text-white pt-1 content-center text-center cursor-pointer bg-blue-600 rounded-lg"
                                         >
                                             <span className="text-3xs">3D models </span>
                                         </Link>
@@ -104,7 +105,7 @@ const Lamp = ({project, currentLang}) => {
                                         />
                                     </div>
                                     <div
-                                        className="h-12 text-3xl font-bold pt-1 text-center rounded-lg">
+                                        className="h-16 text-3xl font-bold text-center ">
                                         {i.price} {'\u20AC'}
                                     </div>
                                     <a
@@ -129,11 +130,11 @@ const Lamp = ({project, currentLang}) => {
     }, [])
 
     return (
-        <>
-            <div className="mt-0 w-screen h-16 fixed fixed-row right-1 backdrop-blur-sm bg-gray-500/50 z-20"></div>
+        <div>
+            <div className="w-screen h-16 fixed fixed-row right-1 backdrop-blur-sm bg-gray-500/50 z-20"></div>
             <Contacts/>
             <Menu currentLang={currentLang}/>
-            <div className="flex items-center justify-center mx-auto h-auto w-screen bg-yellow-50">
+            <div className="flex items-center justify-center h-auto w-screen">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 m-2 mt-12 gap-16">
 
                     {comp}
@@ -146,7 +147,7 @@ const Lamp = ({project, currentLang}) => {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 export default Lamp

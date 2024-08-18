@@ -8,7 +8,7 @@ const Blog = require("../models/Blog");
 
 const storageConfig = multer.diskStorage({
     destination: (req, file, callback) => {
-        callback(null, "./client/public/uploads/");
+        callback(null, "./client/public/fotos/");
     },
     filename: (req, file, callback) => {
         callback(null, file.originalname)
